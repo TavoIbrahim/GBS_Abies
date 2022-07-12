@@ -1,0 +1,34 @@
+// Priors and rules file: H12
+// *********************
+
+[PARAMETERS]
+//#isInt? #name   #dist.#min  #max 
+//all Ns are in number of haploid individuals
+1   JAL            unif    100    100000  output bounded 
+1   FLIN           unif    100    100000  output bounded
+1   COL            unif    100    100000  output bounded
+1   AZUF           unif    100    100000  output bounded
+1   MEZ            unif    100    100000  output bounded
+1   REL            unif    100    100000  output bounded
+1   PER            unif    100    100000  output bounded
+1   ANaz$          unif    100    100000  output bounded
+1   ANrel$         unif    100    100000  output bounded
+1   ANflin$        unif    100    100000  output bounded
+1   ANAb$          unif    100    100000  output bounded
+0   ADM            unif     0     0.5   output bounded
+1   TTEC$          unif   20000   88333  output bounded
+1   delta          unif    1000   15999  output bounded
+1   TEXP$          unif     250    4000  output bounded
+1   gamma          unif     250   15999  output bounded
+0 MJF$ logunif 0.00001 0.01   output
+0 MFJ$ logunif 0.00001 0.01   output
+0 MFA$ logunif 0.00001 0.01   output
+0 MAF$ logunif 0.00001 0.01   output
+[RULES]
+[COMPLEX PARAMETERS]
+0 $RES_RE =  ANrel$ / REL hide
+0 $RES_AZ =  ANaz$ / AZUF hide
+0 $RES_FJ =  ANflin$ / FLIN hide
+0 $RES_AB =  ANAb$ / ANaz$ hide
+1 TMU$ = TTEC$ - delta output bounded
+1 TBU$ = TEXP$ + gamma output bounded
